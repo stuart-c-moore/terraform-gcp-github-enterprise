@@ -1,5 +1,7 @@
 resource "google_compute_address" "github" {
-  name = "github"
+  name    = "github"
+  region  = "${var.region}"
+  project = "${var.project}"
 }
 
 resource "google_compute_network" "github" {
