@@ -40,10 +40,10 @@ resource "google_compute_firewall" "ingress-https" {
   }
 }
 
-resource "google_compute_firewall" "ingress-https_console" {
-  name        = "ingress-https_console"
+resource "google_compute_firewall" "ingress-https-console" {
+  name        = "ingress-https-console"
   description = "Secure web based Management Console. Required for basic installation and configuration."
-  count       = "${var.firewall-ingress-https_console-enabled ? 1 : 0}"
+  count       = "${var.firewall-ingress-https-console-enabled ? 1 : 0}"
   network     = "${google_compute_network.github.self_link}"
 
   allow = {

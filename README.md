@@ -23,7 +23,7 @@ module "terraform-gcp-github-enterprise" {
     region = "${var.region}"
     firewall-ingress-http-enabled = true
     firewall-ingress-https-enabled = true
-    firewall-ingress-https_console-enabled = true
+    firewall-ingress-https-console-enabled = true
     github_version = "2-13-1"
     github_machine_type = "n1-standard-4"
     github_disk = "100"

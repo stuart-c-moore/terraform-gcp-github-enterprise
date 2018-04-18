@@ -9,7 +9,7 @@ variable "firewall-ingress-https-enabled" {
   default = true
 }
 
-variable "firewall-ingress-https_console-enabled" {
+variable "firewall-ingress-https-console-enabled" {
   default = true
 }
 
