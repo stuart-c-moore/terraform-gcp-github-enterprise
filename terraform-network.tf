@@ -39,3 +39,15 @@ resource "google_compute_firewall" "ingress-https" {
     ports    = ["443"]
   }
 }
+
+resource "google_compute_firewall" "ingress-https_console" {
+  name        = "ingress-https_console"
+  description = "Secure web based Management Console. Required for basic installation and configuration."
+  count       = "${var.firewall-ingress-https_console-enabled ? 1 : 0}"
+  network     = "${google_compute_network.github.self_link}"
+
+  allow = {
+    protocol = "tcp"
+    ports    = ["8443"]
+  }
+}

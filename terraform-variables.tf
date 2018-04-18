@@ -9,6 +9,10 @@ variable "firewall-ingress-https-enabled" {
   default = true
 }
 
+variable "firewall-ingress-https_console-enabled" {
+  default = true
+}
+
 variable "github_version" {
   default = "2-13-1"
 }
