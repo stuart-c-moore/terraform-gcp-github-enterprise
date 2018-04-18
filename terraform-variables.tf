@@ -20,3 +20,7 @@ variable "github_machine_type" {
 variable "github_disk" {
   default = "100"
 }
+
+variable "github_cidr" {
+  default = "10.0.0.0/24"
+}
