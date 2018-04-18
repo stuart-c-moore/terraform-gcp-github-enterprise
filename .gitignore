@@ -4,3 +4,7 @@
 
 # Module directory
 .terraform/
+
+# Example directory
+example/variables.tf
+example/.terraform/
