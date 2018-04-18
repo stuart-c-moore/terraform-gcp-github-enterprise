@@ -1,5 +1,5 @@
-resource "google_compute_disk" "github" {
-  name = "github"
+resource "google_compute_disk" "github-data" {
+  name = "github-data"
   type = "pd-ssd"
   zone = "${lookup(var.region_params["${var.region}"],"zone1")}"
   size = "${var.github_disk}"
@@ -18,7 +18,7 @@ resource "google_compute_instance" "github" {
   }
 
   attached_disk {
-    source = "${google_compute_disk.github.self_link}"
+    source = "${google_compute_disk.github-data.self_link}"
   }
 
   network_interface {
