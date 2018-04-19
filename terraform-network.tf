@@ -16,10 +16,10 @@ resource "google_compute_subnetwork" "github" {
   ip_cidr_range = "${var.github_cidr}"
 }
 
-resource "google_compute_firewall" "ingress-http" {
-  name        = "ingress-http"
+resource "google_compute_firewall" "internet-to-github-http" {
+  name        = "internet-to-github-http"
   description = "Web application access. All requests are redirected to the HTTPS port when SSL is enabled."
-  count       = "${var.firewall-ingress-http-enabled ? 1 : 0}"
+  count       = "${var.firewall-internet-to-github-http-enabled ? 1 : 0}"
   network     = "${google_compute_network.github.self_link}"
 
   allow = {
@@ -28,10 +28,10 @@ resource "google_compute_firewall" "ingress-http" {
   }
 }
 
-resource "google_compute_firewall" "ingress-https" {
-  name        = "ingress-https"
+resource "google_compute_firewall" "internet-to-github-https" {
+  name        = "internet-to-github-https"
   description = "Web application and Git over HTTPS access."
-  count       = "${var.firewall-ingress-https-enabled ? 1 : 0}"
+  count       = "${var.firewall-internet-to-github-https-enabled ? 1 : 0}"
   network     = "${google_compute_network.github.self_link}"
 
   allow = {
@@ -40,8 +40,8 @@ resource "google_compute_firewall" "ingress-https" {
   }
 }
 
-resource "google_compute_firewall" "ingress-https-console" {
-  name        = "ingress-https-console"
+resource "google_compute_firewall" "internet-to-github-https-console" {
+  name        = "internet-to-github-https-console"
   description = "Secure web based Management Console. Required for basic installation and configuration."
   count       = "${var.firewall-ingress-https-console-enabled ? 1 : 0}"
   network     = "${google_compute_network.github.self_link}"

@@ -1,15 +1,15 @@
 variable "project" {}
 variable "region" {}
 
-variable "firewall-ingress-http-enabled" {
+variable "firewall-internet-to-github-http-enabled" {
   default = true
 }
 
-variable "firewall-ingress-https-enabled" {
+variable "firewall-internet-to-github-https-enabled" {
   default = true
 }
 
-variable "firewall-ingress-https-console-enabled" {
+variable "firewall-internet-to-github-https-console-enabled" {
   default = true
 }
 

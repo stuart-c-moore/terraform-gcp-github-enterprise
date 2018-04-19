@@ -21,9 +21,9 @@ module "terraform-gcp-github-enterprise" {
     source = "github.com/migs/terraform-gcp-github-enterprise"
     project = "${var.project}"
     region = "${var.region}"
-    firewall-ingress-http-enabled = true
-    firewall-ingress-https-enabled = true
-    firewall-ingress-https-console-enabled = true
+    firewall-internet-to-github-http-enabled = true
+    firewall-internet-to-github-https-enabled = true
+    firewall-internet-to-github-https-console-enabled = true
     github_version = "2-13-1"
     github_machine_type = "n1-standard-4"
     github_disk = "100"
