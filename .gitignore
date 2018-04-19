@@ -6,5 +6,5 @@
 .terraform/
 
 # Example directory
-example/variables.tf
+example/terraform-variables.tf
 example/.terraform/
