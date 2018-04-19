@@ -46,12 +46,38 @@ resource "google_compute_firewall" "internet-to-github-https" {
 resource "google_compute_firewall" "internet-to-github-https-console" {
   name        = "internet-to-github-https-console"
   description = "Secure web based Management Console. Required for basic installation and configuration."
-  count       = "${var.firewall-ingress-https-console-enabled ? 1 : 0}"
+  count       = "${var.firewall-internet-to-github-https-console-enabled ? 1 : 0}"
   network     = "${google_compute_network.github.self_link}"
   target_tags = ["${var.github-tag}"]
 
   allow = {
     protocol = "tcp"
     ports    = ["8443"]
+  }
+}
+
+resource "google_compute_firewall" "internet-to-github-ssh-git" {
+  name        = "internet-to-github-ssh-git"
+  description = "Secure web based Management Console. Required for basic installation and configuration."
+  count       = "${var.firewall-internet-to-github-ssh-git-enabled ? 1 : 0}"
+  network     = "${google_compute_network.github.self_link}"
+  target_tags = ["${var.github-tag}"]
+
+  allow = {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+}
+
+resource "google_compute_firewall" "internet-to-github-ssh-shell" {
+  name        = "internet-to-github-ssh-shell"
+  description = "Secure web based Management Console. Required for basic installation and configuration."
+  count       = "${var.firewall-internet-to-github-ssh-shell-enabled ? 1 : 0}"
+  network     = "${google_compute_network.github.self_link}"
+  target_tags = ["${var.github-tag}"]
+
+  allow = {
+    protocol = "tcp"
+    ports    = ["122"]
   }
 }

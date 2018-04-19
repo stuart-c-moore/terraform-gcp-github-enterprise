@@ -13,6 +13,14 @@ variable "firewall-internet-to-github-https-console-enabled" {
   default = true
 }
 
+variable "firewall-internet-to-github-ssh-git-enabled" {
+  default = true
+}
+
+variable "firewall-internet-to-github-ssh-shell-enabled" {
+  default = true
+}
+
 variable "github-cidr" {
   default = "10.0.0.0/24"
 }
