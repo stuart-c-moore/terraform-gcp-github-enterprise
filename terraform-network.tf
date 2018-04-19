@@ -13,7 +13,7 @@ resource "google_compute_network" "github" {
 resource "google_compute_subnetwork" "github" {
   name          = "github-${var.region}"
   network       = "${google_compute_network.github.self_link}"
-  ip_cidr_range = "${var.github_cidr}"
+  ip_cidr_range = "${var.github-cidr}"
 }
 
 resource "google_compute_firewall" "internet-to-github-http" {
@@ -21,6 +21,7 @@ resource "google_compute_firewall" "internet-to-github-http" {
   description = "Web application access. All requests are redirected to the HTTPS port when SSL is enabled."
   count       = "${var.firewall-internet-to-github-http-enabled ? 1 : 0}"
   network     = "${google_compute_network.github.self_link}"
+  target_tags = ["${var.github-tag}"]
 
   allow = {
     protocol = "tcp"
@@ -34,6 +35,8 @@ resource "google_compute_firewall" "internet-to-github-https" {
   count       = "${var.firewall-internet-to-github-https-enabled ? 1 : 0}"
   network     = "${google_compute_network.github.self_link}"
 
+  target_tags = ["${var.github-tag}"]
+
   allow = {
     protocol = "tcp"
     ports    = ["443"]
@@ -45,6 +48,7 @@ resource "google_compute_firewall" "internet-to-github-https-console" {
   description = "Secure web based Management Console. Required for basic installation and configuration."
   count       = "${var.firewall-ingress-https-console-enabled ? 1 : 0}"
   network     = "${google_compute_network.github.self_link}"
+  target_tags = ["${var.github-tag}"]
 
   allow = {
     protocol = "tcp"
