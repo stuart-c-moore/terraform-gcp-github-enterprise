@@ -5,7 +5,7 @@ resource "google_compute_address" "github" {
 }
 
 resource "google_compute_network" "github" {
-  name                    = "github"
+  name                    = "${var.network}"
   project                 = "${var.project}"
   auto_create_subnetworks = "false"
 }

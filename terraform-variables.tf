@@ -28,3 +28,7 @@ variable "github_disk" {
 variable "github_cidr" {
   default = "10.0.0.0/24"
 }
+
+variable "network" {
+  default = "github"
+}

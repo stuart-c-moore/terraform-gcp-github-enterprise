@@ -27,5 +27,6 @@ module "terraform-gcp-github-enterprise" {
     github_version = "2-13-1"
     github_machine_type = "n1-standard-4"
     github_disk = "100"
+    network = "github"
 }
 ```
